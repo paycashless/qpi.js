@@ -21,7 +21,6 @@ export class QrPaymentIntent {
 
   encode(requestData: RequestDataObjects) {
     const test = DataObjectSchema.parse(requestData);
-    console.log('validation result', test)
     const { version, ...objects } = requestData;
     objects.merchantAccount.schemeIdentifier = 'org.paycashless.qpi';
 
