@@ -20,7 +20,7 @@ export class QrPaymentIntent {
   }
 
   encode(requestData: RequestDataObjects) {
-    const test = DataObjectSchema.parse(requestData);
+    DataObjectSchema.parse(requestData);
     const { version, ...objects } = requestData;
     objects.merchantAccount.schemeIdentifier = 'org.paycashless.qpi';
 
