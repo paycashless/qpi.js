@@ -1,3 +1,4 @@
+import { ZodError } from 'zod';
 import { QrPaymentIntent } from '../index';
 import { INVALID_DATA_OBJECTS, VALID_DATA_OBJECTS } from './payloads';
 
@@ -10,12 +11,13 @@ describe('QrPaymentIntent', () => {
 
   describe('encode', () => {
     it('should encode the payload correctly', async () => {
-      const result = await qpi.encode(VALID_DATA_OBJECTS.requestObject);
+      const result = qpi.encode(VALID_DATA_OBJECTS.requestObject);
       expect(result).toBe(VALID_DATA_OBJECTS.payload.with_crc);
     });
 
     it('should throw an error for invalid data', async () => {
-      
+      expect(() => qpi.encode(INVALID_DATA_OBJECTS.decodedResult))
+        .toThrow(ZodError)
     });
   });
 

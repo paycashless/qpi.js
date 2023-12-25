@@ -63,15 +63,15 @@ export const INVALID_DATA_OBJECTS = {
     invalid_checksum: '00020101021136470210110001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566625403030550603***07020505065672230813FOOD DELIVERY11035216304BB08'
   },
   decodedResult: {
-    version: '01',
-    intentType: '11',
+    version: '99',
+    intentType: IntentType.static,
     merchantAccount: {
       accountNumber: '1100010702',
       nipCode: '090267',
       schemeIdentifier: 'org.paycashless.qpi'
     },
     merchantCategoryCode: '4111',
-    countryCode: 'NG',
+    countryCode: 'NGL',
     merchantName: 'GRUBWAYS',
     merchantCity: 'ABUJA',
     postalCode: '900231',
