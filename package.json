@@ -1,6 +1,6 @@
 {
   "name": "@paycashless/qpi.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "manipulate qpi data objects",
   "main": "index.ts",
   "scripts": {
