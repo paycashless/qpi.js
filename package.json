@@ -27,6 +27,6 @@
     "@paycashless:registry": "https://npm.pkg.github.com"
   },
   "repository": {
-    "url": "https://github.com/paycashless/qpi.js"
+    "url": "git+https://github.com/paycashless/qpi.js.git"
   }
 }
