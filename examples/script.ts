@@ -3,7 +3,7 @@ import { QrPaymentIntent, IntentType } from ".."
 async function testImpl() {
   const dataObjects = {
     version: '01',
-    intentType: IntentType.static,
+    intentType: IntentType.dynamic,
     merchantAccount: {
       accountNumber: '2200010702',
       nipCode: '090267'
@@ -26,7 +26,9 @@ async function testImpl() {
   }
 
   const qpi = new QrPaymentIntent();
-  console.log(qpi.encode(dataObjects))
+  const payload = qpi.encode(dataObjects);
+  console.log(payload)
+  console.log('uri safe', encodeURI(payload))
   console.log(JSON.stringify(qpi.decode('00020101021136470210110001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566625403030550603***07020505065672230813FOOD DELIVERY11035216304F708')))
 }
 
