@@ -6,7 +6,8 @@
   "types": "dist/types",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p tsconfig.json"
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
   },
   "jest": {
     "preset": "ts-jest",
