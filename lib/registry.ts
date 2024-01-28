@@ -188,5 +188,25 @@ export const DataObjectRegistry: Registry  = {
         minLength: 3
       }
     }
+  },
+  paymentIntentDataObjects: {
+    id: '80',
+    type: DataObjectType.RootTemplate,
+    maxLength: 99,
+    minLength: 0,
+    template: {
+      schemeIdentifier: {
+        id: '00',
+        type: DataObjectType.TemplatePrimitive,
+        maxLength: 19,
+        minLength: 19
+      },
+      token: {
+        id: '01',
+        type: DataObjectType.TemplatePrimitive,
+        maxLength: 36,
+        minLength: 36
+      }
+    }
   }
 }

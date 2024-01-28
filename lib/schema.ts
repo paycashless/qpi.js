@@ -12,7 +12,8 @@ const {
   currency,
   serviceFee,
   percentageServiceFee,
-  additionalDataObjects: { template: aTemplate }
+  additionalDataObjects: { template: aTemplate },
+  paymentIntentDataObjects: { template: piTemplate }
 } = DataObjectRegistry;
 
 export const DataObjectSchema = z.object({
@@ -85,5 +86,10 @@ export const DataObjectSchema = z.object({
     merchantChannel: z.string()
       .min(aTemplate?.narration.minLength!)
       .max(aTemplate?.narration.maxLength!),
+  }),
+  paymentIntentDataObjects: z.object({
+    token: z.string()
+      .min(piTemplate?.token.minLength!)
+      .max(piTemplate?.token.maxLength!)
   })
 })

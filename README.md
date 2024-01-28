@@ -34,7 +34,10 @@ This function encodes your payment intent data objects into a string that can be
       reference: '567223',
       narration: 'FOOD DELIVERY',
       merchantChannel: '521' // online
-    }
+    },
+    paymentIntentDataObjects: {
+      token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
+    },
   }
 
   const qpi = new QrPaymentIntent();
@@ -48,7 +51,7 @@ This function allows you to decode a QR payment intent payload back to readable 
 ```js
 import { QrPaymentIntent } from '@paycashless/qpi.js';
 
-const payload = '00020101021136470210220001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627103030550620cust_2bt7pwl20mb25sa07020505065672230813FOOD DELIVERY1103521630487F7';
+const payload = '00020101021236470210220001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180630136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80019org.paycashless.qpi630423C0';
 const qpi = new QrPaymentIntent();
 const dataObjects = qpi.decode(payload);
 console.log(dataObjects);
@@ -92,6 +95,48 @@ interface DataObjects {
     narration: string;
     merchantChannel: string;
   };
+  paymentIntentDataObjects: {
+    schemeIdentifier: string;
+    token: string;
+  },
 }
 ```
 
+> `merchantCategoryCode` data object shall contain MCC as defined by [ISO 18245]
+
+> `countryCode` data object shall contain the country code of the merchant as defined by [ISO 3166-1 alpha-2]
+
+> `additionalDataObjects.merchantChannel` has three chracters, each chracter in each position identifies the characteristic of the channel used for the transaction. The possible value of each character and its definition are listed below
+
+> `currency` data object is to conform with [ISO 4217] containing 3 digit numeric representation of the transaction currency
+
+### Merchant Channel: First chracter (Media)
+
+| Value      | Meaning |
+| ----------- | ----------- |
+| "0" | Print - Merchant Sticker |
+| "1" | Print - Bill/Invoice |
+| "2" | Print - Magazine/Poster |
+| "3" | Print - Other |
+| "4" | Screen/Electronic - Merchant POS/POI |
+| "5" | Screen/Electronic - Website |
+| "6" | Screen/Electronic - App |
+| "7" | Screen/Electronic - Other |
+
+### Merchant Channel: Second chracter (Transaction Location)
+
+| Value      | Meaning |
+| ----------- | ----------- |
+| "0" | At Merchant premises/registered address |
+| "1" | Not at merchant premises/registered address |
+| "2" | Remote commerce |
+| "3" | Other |
+
+### Merchant Channel: Third chracter (Merchant Presence)
+
+| Value      | Meaning |
+| ----------- | ----------- |
+| "0" | Attended POI |
+| "1" | Unattended |
+| "2" | Semi attended (Self-checkout) |
+| "3" | Other |

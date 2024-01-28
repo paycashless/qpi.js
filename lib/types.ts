@@ -53,11 +53,18 @@ export interface DataObjects {
     narration: string;
     merchantChannel: string;
   };
+  paymentIntentDataObjects: {
+    schemeIdentifier: string;
+    token: string;
+  }
 }
 
-export type RequestDataObjects = Omit<DataObjects, 'checksum'|'merchantAccount'> & {
+export type RequestDataObjects = Omit<DataObjects, 'checksum'|'merchantAccount'|'paymentIntentDataObjects'> & {
   [key: string]: any;
   merchantAccount: Omit<DataObjects['merchantAccount'], 'schemeIdentifier'> & {
     schemeIdentifier?: string;
   };
+  paymentIntentDataObjects: Omit<DataObjects['paymentIntentDataObjects'], 'schemeIdentifier'> & {
+    schemeIdentifier?: string;
+  }
 }

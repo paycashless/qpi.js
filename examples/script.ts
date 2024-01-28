@@ -1,9 +1,10 @@
+import { RequestDataObjects } from "lib/types";
 import { QrPaymentIntent, IntentType } from ".."
 
 async function testImpl() {
-  const dataObjects = {
+  const dataObjects: RequestDataObjects = {
     version: '01',
-    intentType: IntentType.static,
+    intentType: IntentType.dynamic,
     merchantAccount: {
       accountNumber: '2200010702',
       nipCode: '090267'
@@ -17,17 +18,22 @@ async function testImpl() {
     currency: '566',
     additionalDataObjects: {
       storeLabel: '055',
-      customerLabel: 'cust_2bt7pwl20mb25sa',
+      customerLabel: 'customer@example.com',
       terminalLabel: '05',
-      reference: '567223',
+      reference: 'PAY_56722803',
       narration: 'FOOD DELIVERY',
       merchantChannel: '521'
-    }
+    },
+    paymentIntentDataObjects: {
+      token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
+    },
   }
 
   const qpi = new QrPaymentIntent();
-  console.log(qpi.encode(dataObjects))
-  console.log(JSON.stringify(qpi.decode('00020101021136470210110001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566625403030550603***07020505065672230813FOOD DELIVERY11035216304F708')))
+  const payload = qpi.encode(dataObjects);
+  console.log(payload)
+  console.log('uri safe', encodeURI(payload))
+  console.log(JSON.stringify(qpi.decode('00020101021236470210220001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180630136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80019org.paycashless.qpi630423C0')))
 }
 
 testImpl();
