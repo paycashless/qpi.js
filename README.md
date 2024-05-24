@@ -17,8 +17,8 @@ This function encodes your payment intent data objects into a string that can be
     version: '01',
     intentType: IntentType.static,
     merchantAccount: {
-      accountNumber: '2200010702',
-      nipCode: '090267'
+      accountIndex: '1',
+      merchantId: '1'
     },
     merchantCategoryCode: '4111', // transportation
     countryCode: 'NG',
@@ -51,7 +51,7 @@ This function allows you to decode a QR payment intent payload back to readable 
 ```js
 import { QrPaymentIntent } from '@paycashless/qpi.js';
 
-const payload = '00020101021236470210220001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180630136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80019org.paycashless.qpi630423C0';
+const payload = '000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14';
 const qpi = new QrPaymentIntent();
 const dataObjects = qpi.decode(payload);
 console.log(dataObjects);
@@ -67,10 +67,8 @@ interface DataObjects {
   checksum: string;
   merchantAccount: {
     schemeIdentifier: string;
-    accountNumber: string;
-    nipCode: string;
-    piftCode?: string;
-    merchantId?: string;
+    accountIndex: string;
+    merchantId: string;
   };
   merchantCategoryCode: string;
   countryCode: string;

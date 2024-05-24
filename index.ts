@@ -22,8 +22,8 @@ export class QrPaymentIntent {
   encode(requestData: RequestDataObjects) {
     DataObjectSchema.parse(requestData);
     const { version, ...objects } = requestData;
-    objects.merchantAccount.schemeIdentifier = 'org.paycashless.qpi';
-    objects.paymentIntentDataObjects.schemeIdentifier = 'org.paycashless.qpi';
+    objects.merchantAccount.schemeIdentifier = 'com.paycashless';
+    objects.paymentIntentDataObjects.schemeIdentifier = 'com.paycashless';
 
     let payload = DataObjectRegistry.version.id.concat(len(version)).concat(version);
     for (const key in objects) {
