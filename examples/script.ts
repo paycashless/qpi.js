@@ -6,8 +6,8 @@ async function testImpl() {
     version: '01',
     intentType: IntentType.dynamic,
     merchantAccount: {
-      accountNumber: '2200010702',
-      nipCode: '090267'
+      accountIndex: '1',
+      merchantId: '1'
     },
     merchantCategoryCode: '4111',
     countryCode: 'NG',
@@ -27,13 +27,14 @@ async function testImpl() {
     paymentIntentDataObjects: {
       token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
     },
-  }
+  } satisfies RequestDataObjects;
 
   const qpi = new QrPaymentIntent();
   const payload = qpi.encode(dataObjects);
   console.log(payload)
   console.log('uri safe', encodeURI(payload))
-  console.log(JSON.stringify(qpi.decode('00020101021236470210220001070204060902670019org.paycashless.qpi520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180630136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80019org.paycashless.qpi630423C0')))
+  // console.log(JSON.stringify(qpi.decode('000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14')))
 }
 
 testImpl();
+
