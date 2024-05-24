@@ -20,16 +20,9 @@ export const DataObjectSchema = z.object({
   version: z.enum(['01']),
   intentType: z.enum(['11', '12']),
   merchantAccount: z.object({
-    accountNumber: z.string()
-      .min(mTemplate?.accountNumber.minLength!)
-      .max(mTemplate?.accountNumber.maxLength!),
-    nipCode: z.string()
-      .min(mTemplate?.nipCode.minLength!)
-      .max(mTemplate?.nipCode.maxLength!),
-    piftCode: z.string()
-      .min(mTemplate?.piftCode.minLength!)
-      .max(mTemplate?.piftCode.maxLength!)
-      .optional(),
+    accountIndex: z.string()
+      .min(mTemplate?.accountIndex.minLength!)
+      .max(mTemplate?.accountIndex.maxLength!),
     merchantId: z.string()
       .min(mTemplate?.merchantId.minLength!)
       .max(mTemplate?.merchantId.maxLength!)

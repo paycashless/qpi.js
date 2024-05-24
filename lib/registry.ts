@@ -25,38 +25,26 @@ export const DataObjectRegistry: Registry  = {
     id: '36',
     type: DataObjectType.RootTemplate,
     maxLength: 99,
-    minLength: 35,
+    minLength: 53,
     template: {
       schemeIdentifier: {
         id: '00',
         type: DataObjectType.TemplatePrimitive,
-        maxLength: 19,
-        minLength: 19,
+        maxLength: 15,
+        minLength: 15,
       },
       merchantId: {
         id: '01',
         type: DataObjectType.TemplatePrimitive,
-        maxLength: 10,
-        minLength: 10
-      },
-      accountNumber: {
-        id: '02',
-        type: DataObjectType.TemplatePrimitive,
-        maxLength: 10,
-        minLength: 10
-      },
-      piftCode: {
-        id: '03',
-        type: DataObjectType.TemplatePrimitive,
-        maxLength: 10,
-        minLength: 2
-      },
-      nipCode: {
-        id: '04',
-        type: DataObjectType.TemplatePrimitive,
-        maxLength: 10,
+        maxLength: 19,
         minLength: 1
       },
+      accountIndex: {
+        id: '02',
+        type: DataObjectType.TemplatePrimitive,
+        maxLength: 19,
+        minLength: 1
+      }
     }
   },
   merchantCategoryCode: {

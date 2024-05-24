@@ -25,10 +25,8 @@ export interface DataObjects {
   checksum: string;
   merchantAccount: {
     schemeIdentifier: string;
-    accountNumber: string;
-    nipCode: string;
-    piftCode?: string;
-    merchantId?: string;
+    accountIndex: string;
+    merchantId: string;
   };
   merchantCategoryCode: string;
   countryCode: string;
@@ -59,7 +57,7 @@ export interface DataObjects {
   }
 }
 
-export type RequestDataObjects = Omit<DataObjects, 'checksum'|'merchantAccount'|'paymentIntentDataObjects'> & {
+export type RequestDataObjects = Omit<DataObjects, 'checksum'|'paymentIntentDataObjects'|'merchantAccount'> & {
   [key: string]: any;
   merchantAccount: Omit<DataObjects['merchantAccount'], 'schemeIdentifier'> & {
     schemeIdentifier?: string;
