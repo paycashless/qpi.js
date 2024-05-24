@@ -33,7 +33,7 @@ async function testImpl() {
   const payload = qpi.encode(dataObjects);
   console.log(payload)
   console.log('uri safe', encodeURI(payload))
-  // console.log(JSON.stringify(qpi.decode('000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14')))
+  console.log(JSON.stringify(qpi.decode('000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14')))
 }
 
 testImpl();
