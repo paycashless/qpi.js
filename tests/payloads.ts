@@ -2,21 +2,20 @@ import { IntentType } from "../lib/types";
 
 export const VALID_DATA_OBJECTS = {
   payload: {
-    with_crc: '000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14',
-    without_crc: '000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304'
+    with_crc: '00020101021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304B06F',
+    without_crc: '00020101021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304'
   },
   decodedResult: {
     version: '01',
     intentType: IntentType.dynamic,
-    merchantAccount: {
+    payeeAccount: {
       schemeIdentifier: "com.paycashless",
-      accountIndex: '1',
-      merchantId: '1'
+      financialAddress: 'grubways61@fbn',
     },
     merchantCategoryCode: '4111',
     countryCode: 'NG',
-    merchantName: 'GRUBWAYS',
-    merchantCity: 'ABUJA',
+    payeeName: 'GRUBWAYS',
+    city: 'ABUJA',
     postalCode: '900231',
     amount: '5000',
     currency: '566',
@@ -26,25 +25,24 @@ export const VALID_DATA_OBJECTS = {
       terminalLabel: '05',
       reference: 'PAY_56722803',
       narration: 'FOOD DELIVERY',
-      merchantChannel: '521'
+      channel: '521'
     },
     paymentIntentDataObjects: {
       schemeIdentifier: "com.paycashless",
       token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
     },
-    checksum: 'BB14'
+    checksum: 'B06F'
   },
   requestObject: {
     version: '01',
     intentType: IntentType.dynamic,
-    merchantAccount: {
-      accountIndex: '1',
-      merchantId: '1'
+    payeeAccount: {
+      financialAddress: 'grubways61@fbn'
     },
     merchantCategoryCode: '4111',
     countryCode: 'NG',
-    merchantName: 'GRUBWAYS',
-    merchantCity: 'ABUJA',
+    payeeName: 'GRUBWAYS',
+    city: 'ABUJA',
     postalCode: '900231',
     amount: '5000',
     currency: '566',
@@ -54,7 +52,7 @@ export const VALID_DATA_OBJECTS = {
       terminalLabel: '05',
       reference: 'PAY_56722803',
       narration: 'FOOD DELIVERY',
-      merchantChannel: '521'
+      channel: '521'
     },
     paymentIntentDataObjects: {
       token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
@@ -64,22 +62,21 @@ export const VALID_DATA_OBJECTS = {
 
 export const INVALID_DATA_OBJECTS = {
   payload: {
-    wrong_id: '000201990212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304256A',
-    wrong_prefix: '770201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14',
-    invalid_checksum: '000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB33'
+    wrong_id: '00020199021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless630458A2',
+    wrong_prefix: '99029901021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304DE3A',
+    invalid_checksum: '00020101021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304B0FF'
   },
   decodedResult: {
     version: '99',
     intentType: IntentType.static,
-    merchantAccount: {
-      accountIndex: '1',
-      merchantId: '1',
-      schemeIdentifier: 'com.paycashless'
+    payeeAccount: {
+      schemeIdentifier: 'com.paycashless',
+      financialAddress: 'grubways61@fbn'
     },
     merchantCategoryCode: '4111',
     countryCode: 'NGL',
-    merchantName: 'GRUBWAYS',
-    merchantCity: 'ABUJA',
+    payeeName: 'GRUBWAYS',
+    city: 'ABUJA',
     postalCode: '900231',
     amount: '5000',
     currency: '566',
@@ -89,7 +86,7 @@ export const INVALID_DATA_OBJECTS = {
       terminalLabel: '05',
       reference: '567223',
       narration: 'FOOD DELIVERY',
-      merchantChannel: '521'
+      channel: '521'
     },
     paymentIntentDataObjects: {
       token: "tok_neojvjtlPrrpr9e03hplcag2ig5gpua8"
