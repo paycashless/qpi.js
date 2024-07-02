@@ -27,7 +27,7 @@ export interface DataObjects {
     schemeIdentifier: string;
     financialAddress: string;
   };
-  merchantCategoryCode: string;
+  merchantCategoryCode?: string;
   countryCode: string;
   payeeName: string;
   city: string;
@@ -58,7 +58,6 @@ export interface DataObjects {
 
 export type RequestDataObjects = Omit<DataObjects, 'checksum'|'paymentIntentDataObjects'|'payeeAccount'> & {
   [key: string]: any;
-  merchantCategoryCode?: string;
   payeeAccount: Omit<DataObjects['payeeAccount'], 'schemeIdentifier'> & {
     schemeIdentifier?: string;
   };
