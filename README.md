@@ -22,8 +22,8 @@ This function encodes your payment intent data objects into a string that can be
     },
     merchantCategoryCode: '4111', // transportation
     countryCode: 'NG',
-    merchantName: 'GRUBWAYS',
-    merchantCity: 'ABUJA',
+    payeeName: 'GRUBWAYS',
+    city: 'ABUJA',
     postalCode: '900231',
     amount: '5000',
     currency: '566', // NGN
@@ -33,7 +33,7 @@ This function encodes your payment intent data objects into a string that can be
       terminalLabel: '05',
       reference: '567223',
       narration: 'FOOD DELIVERY',
-      merchantChannel: '521' // online
+      channel: '521' // online
     },
     paymentIntentDataObjects: {
       token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
@@ -51,7 +51,7 @@ This function allows you to decode a QR payment intent payload back to readable 
 ```js
 import { QrPaymentIntent } from '@paycashless/qpi.js';
 
-const payload = '000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14';
+const payload = '00020101021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304B06F';
 const qpi = new QrPaymentIntent();
 const dataObjects = qpi.decode(payload);
 console.log(dataObjects);
@@ -65,20 +65,19 @@ interface DataObjects {
   version: string;
   intentType: IntentType;
   checksum: string;
-  merchantAccount: {
+  payeeAccount: {
     schemeIdentifier: string;
-    accountIndex: string;
-    merchantId: string;
+    financialAddress: string;
   };
   merchantCategoryCode: string;
   countryCode: string;
-  merchantName: string;
-  merchantCity: string;
+  payeeName: string;
+  city: string;
   postalCode: string;
-  merchantInfoAltLanguage?: {
+  payeeInfoAltLanguage?: {
     localLanguage: string;
-    merchantName: string;
-    merchantCity: string;
+    payeeName: string;
+    city: string;
   };
   amount: string;
   currency: string;
@@ -91,7 +90,7 @@ interface DataObjects {
     loyaltyNumber?: string;
     reference: string;
     narration: string;
-    merchantChannel: string;
+    channel: string;
   };
   paymentIntentDataObjects: {
     schemeIdentifier: string;
@@ -104,11 +103,11 @@ interface DataObjects {
 
 > `countryCode` data object shall contain the country code of the merchant as defined by [ISO 3166-1 alpha-2]
 
-> `additionalDataObjects.merchantChannel` has three chracters, each chracter in each position identifies the characteristic of the channel used for the transaction. The possible value of each character and its definition are listed below
+> `additionalDataObjects.channel` has three chracters, each chracter in each position identifies the characteristic of the channel used for the transaction. The possible value of each character and its definition are listed below
 
 > `currency` data object is to conform with [ISO 4217] containing 3 digit numeric representation of the transaction currency
 
-### Merchant Channel: First chracter (Media)
+### Channel: First chracter (Media)
 
 | Value      | Meaning |
 | ----------- | ----------- |
@@ -121,7 +120,7 @@ interface DataObjects {
 | "6" | Screen/Electronic - App |
 | "7" | Screen/Electronic - Other |
 
-### Merchant Channel: Second chracter (Transaction Location)
+### Channel: Second chracter (Transaction Location)
 
 | Value      | Meaning |
 | ----------- | ----------- |
@@ -130,7 +129,7 @@ interface DataObjects {
 | "2" | Remote commerce |
 | "3" | Other |
 
-### Merchant Channel: Third chracter (Merchant Presence)
+### Channel: Third chracter (Merchant Presence)
 
 | Value      | Meaning |
 | ----------- | ----------- |
