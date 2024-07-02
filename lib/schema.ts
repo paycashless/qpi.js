@@ -1,13 +1,13 @@
 import z from "zod";
 import { DataObjectRegistry } from "./registry";
 const {
-  merchantAccount: { template: mTemplate },
+  payeeAccount: { template: mTemplate },
   merchantCategoryCode,
   countryCode,
-  merchantName,
-  merchantCity,
+  payeeName,
+  city,
   postalCode,
-  merchantInfoAltLanguage: { template: mInfoTemplate },
+  payeeInfoAltLanguage: { template: pInfoTemplate },
   amount,
   currency,
   serviceFee,
@@ -19,34 +19,31 @@ const {
 export const DataObjectSchema = z.object({
   version: z.enum(['01']),
   intentType: z.enum(['11', '12']),
-  merchantAccount: z.object({
-    accountIndex: z.string()
-      .min(mTemplate?.accountIndex.minLength!)
-      .max(mTemplate?.accountIndex.maxLength!),
-    merchantId: z.string()
-      .min(mTemplate?.merchantId.minLength!)
-      .max(mTemplate?.merchantId.maxLength!)
-      .optional(),
+  payeeAccount: z.object({
+    financialAddress: z.string()
+      .min(mTemplate?.financialAddress.minLength!)
+      .max(mTemplate?.financialAddress.maxLength!),
   }),
   merchantCategoryCode: z.string()
     .min(merchantCategoryCode.minLength)
-    .max(merchantCategoryCode.maxLength),
+    .max(merchantCategoryCode.maxLength)
+    .optional(),
   countryCode: z.string().min(countryCode.minLength).max(countryCode.maxLength),
-  merchantName: z.string().min(merchantName.minLength).max(merchantName.maxLength),
-  merchantCity: z.string().min(merchantCity.minLength).max(merchantCity.maxLength),
+  payeeName: z.string().min(payeeName.minLength).max(payeeName.maxLength),
+  city: z.string().min(city.minLength).max(city.maxLength),
   postalCode: z.string().min(postalCode.minLength).max(postalCode.maxLength),
-  merchantInfoAltLanguage: z.object({
+  payeeInfoAltLanguage: z.object({
     localLanguage: z.string()
-      .min(mInfoTemplate?.localLanguage.minLength!)
-      .max(mInfoTemplate?.localLanguage.maxLength!)
+      .min(pInfoTemplate?.localLanguage.minLength!)
+      .max(pInfoTemplate?.localLanguage.maxLength!)
       .optional(),
-    merchantName: z.string()
-      .min(mInfoTemplate?.merchantName.minLength!)
-      .max(mInfoTemplate?.merchantName.maxLength!)
+    payeeName: z.string()
+      .min(pInfoTemplate?.payeeName.minLength!)
+      .max(pInfoTemplate?.payeeName.maxLength!)
       .optional(),
-    merchantCity: z.string()
-      .min(mInfoTemplate?.merchantCity.minLength!)
-      .max(mInfoTemplate?.merchantCity.maxLength!)
+    city: z.string()
+      .min(pInfoTemplate?.city.minLength!)
+      .max(pInfoTemplate?.city.maxLength!)
       .optional(),
   }).optional(),
   amount: z.string().min(amount.minLength).max(amount.maxLength),
@@ -59,13 +56,16 @@ export const DataObjectSchema = z.object({
   additionalDataObjects: z.object({
     storeLabel: z.string()
       .min(aTemplate?.storeLabel.minLength!)
-      .max(aTemplate?.storeLabel.maxLength!),
+      .max(aTemplate?.storeLabel.maxLength!)
+      .optional(),
     customerLabel: z.string()
       .min(aTemplate?.customerLabel.minLength!)
-      .max(aTemplate?.customerLabel.maxLength!),
+      .max(aTemplate?.customerLabel.maxLength!)
+      .optional(),
     terminalLabel: z.string()
       .min(aTemplate?.terminalLabel.minLength!)
-      .max(aTemplate?.terminalLabel.maxLength!),
+      .max(aTemplate?.terminalLabel.maxLength!)
+      .optional(),
     loyaltyNumber: z.string()
       .min(aTemplate?.loyaltyNumber.minLength!)
       .max(aTemplate?.loyaltyNumber.maxLength!)
@@ -76,7 +76,7 @@ export const DataObjectSchema = z.object({
     narration: z.string()
       .min(aTemplate?.narration.minLength!)
       .max(aTemplate?.narration.maxLength!),
-    merchantChannel: z.string()
+    channel: z.string()
       .min(aTemplate?.narration.minLength!)
       .max(aTemplate?.narration.maxLength!),
   }),

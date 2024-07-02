@@ -21,7 +21,7 @@ export const DataObjectRegistry: Registry  = {
     maxLength: 2,
     minLength: 2
   },
-  merchantAccount: {
+  payeeAccount: {
     id: '36',
     type: DataObjectType.RootTemplate,
     maxLength: 99,
@@ -33,16 +33,10 @@ export const DataObjectRegistry: Registry  = {
         maxLength: 15,
         minLength: 15,
       },
-      merchantId: {
+      financialAddress: {
         id: '01',
         type: DataObjectType.TemplatePrimitive,
-        maxLength: 19,
-        minLength: 1
-      },
-      accountIndex: {
-        id: '02',
-        type: DataObjectType.TemplatePrimitive,
-        maxLength: 19,
+        maxLength: 99,
         minLength: 1
       }
     }
@@ -51,7 +45,7 @@ export const DataObjectRegistry: Registry  = {
     id: '52',
     type: DataObjectType.RootPrimitive,
     maxLength: 4,
-    minLength: 4
+    minLength: 0
   },
   countryCode: {
     id: '58',
@@ -59,13 +53,13 @@ export const DataObjectRegistry: Registry  = {
     maxLength: 2,
     minLength: 2
   },
-  merchantName: {
+  payeeName: {
     id: '59',
     type: DataObjectType.RootPrimitive,
     maxLength: 25,
     minLength: 2
   },
-  merchantCity: {
+  city: {
     id: '60',
     type: DataObjectType.RootPrimitive,
     maxLength: 15,
@@ -77,7 +71,7 @@ export const DataObjectRegistry: Registry  = {
     maxLength: 10,
     minLength: 2
   },
-  merchantInfoAltLanguage: {
+  payeeInfoAltLanguage: {
     id: '64',
     type: DataObjectType.RootTemplate,
     maxLength: 99,
@@ -89,13 +83,13 @@ export const DataObjectRegistry: Registry  = {
         maxLength: 25,
         minLength: 0
       },
-      merchantName: {
+      payeeName: {
         id: '01',
         type: DataObjectType.TemplatePrimitive,
         maxLength: 25,
         minLength: 0
       },
-      merchantCity: {
+      city: {
         id: '02',
         type: DataObjectType.TemplatePrimitive,
         maxLength: 25,
@@ -169,7 +163,7 @@ export const DataObjectRegistry: Registry  = {
         maxLength: 25,
         minLength: 0
       },
-      merchantChannel: {
+      channel: {
         id: '11',
         type: DataObjectType.TemplatePrimitive,
         maxLength: 3,

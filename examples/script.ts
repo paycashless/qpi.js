@@ -1,18 +1,17 @@
-import { RequestDataObjects } from "lib/types";
-import { QrPaymentIntent, IntentType } from ".."
+import { RequestDataObjects } from "../lib/types";
+import { QrPaymentIntent, IntentType } from "../index"
 
 async function testImpl() {
   const dataObjects: RequestDataObjects = {
     version: '01',
     intentType: IntentType.dynamic,
-    merchantAccount: {
-      accountIndex: '1',
-      merchantId: '1'
+    payeeAccount: {
+      financialAddress: 'grubways61@fbn'
     },
     merchantCategoryCode: '4111',
     countryCode: 'NG',
-    merchantName: 'GRUBWAYS',
-    merchantCity: 'ABUJA',
+    payeeName: 'GRUBWAYS',
+    city: 'ABUJA',
     postalCode: '900231',
     amount: '5000',
     currency: '566',
@@ -22,7 +21,7 @@ async function testImpl() {
       terminalLabel: '05',
       reference: 'PAY_56722803',
       narration: 'FOOD DELIVERY',
-      merchantChannel: '521'
+      channel: '521'
     },
     paymentIntentDataObjects: {
       token: "tok_neojvjkwPrrpr9e03hplcag2ig5gpua8"
@@ -33,7 +32,7 @@ async function testImpl() {
   const payload = qpi.encode(dataObjects);
   console.log(payload)
   console.log('uri safe', encodeURI(payload))
-  console.log(JSON.stringify(qpi.decode('000201010212362902011010110015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304BB14')))
+  console.log(JSON.stringify(qpi.decode('00020101021236370114grubways61@fbn0015com.paycashless520441115802NG5908GRUBWAYS6005ABUJA6106900231540450005303566627703030550620customer@example.com0702050512PAY_567228030813FOOD DELIVERY110352180590136tok_neojvjkwPrrpr9e03hplcag2ig5gpua80015com.paycashless6304B06F')))
 }
 
 testImpl();

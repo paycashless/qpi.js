@@ -23,33 +23,32 @@ export interface DataObjects {
   version: string;
   intentType: IntentType;
   checksum: string;
-  merchantAccount: {
+  payeeAccount: {
     schemeIdentifier: string;
-    accountIndex: string;
-    merchantId: string;
+    financialAddress: string;
   };
   merchantCategoryCode: string;
   countryCode: string;
-  merchantName: string;
-  merchantCity: string;
+  payeeName: string;
+  city: string;
   postalCode: string;
-  merchantInfoAltLanguage?: {
+  payeeInfoAltLanguage?: {
     localLanguage: string;
-    merchantName: string;
-    merchantCity: string;
+    payeeName: string;
+    city: string;
   };
   amount: string;
   currency: string;
   serviceFee?: string;
   percentageServiceFee?: string;
   additionalDataObjects: {
-    storeLabel: string;
-    customerLabel: string;
-    terminalLabel: string;
+    storeLabel?: string;
+    customerLabel?: string;
+    terminalLabel?: string;
     loyaltyNumber?: string;
     reference: string;
     narration: string;
-    merchantChannel: string;
+    channel: string;
   };
   paymentIntentDataObjects: {
     schemeIdentifier: string;
@@ -57,9 +56,10 @@ export interface DataObjects {
   }
 }
 
-export type RequestDataObjects = Omit<DataObjects, 'checksum'|'paymentIntentDataObjects'|'merchantAccount'> & {
+export type RequestDataObjects = Omit<DataObjects, 'checksum'|'paymentIntentDataObjects'|'payeeAccount'> & {
   [key: string]: any;
-  merchantAccount: Omit<DataObjects['merchantAccount'], 'schemeIdentifier'> & {
+  merchantCategoryCode?: string;
+  payeeAccount: Omit<DataObjects['payeeAccount'], 'schemeIdentifier'> & {
     schemeIdentifier?: string;
   };
   paymentIntentDataObjects: Omit<DataObjects['paymentIntentDataObjects'], 'schemeIdentifier'> & {
