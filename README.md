@@ -16,9 +16,9 @@ This function encodes your payment intent data objects into a string that can be
   const dataObjects = {
     version: '01',
     intentType: IntentType.static,
-    merchantAccount: {
-      accountIndex: '1',
-      merchantId: '1'
+    paymentAccount: {
+      schemeIdentifier: 'com.paycashless',
+      financialAddress: 'user@example.com'
     },
     merchantCategoryCode: '4111', // transportation
     countryCode: 'NG',
