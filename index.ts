@@ -21,9 +21,14 @@ export class QrPaymentIntent {
 
   encode(requestData: RequestDataObjects) {
     DataObjectSchema.parse(requestData);
-    const { version, ...objects } = requestData;
-    objects.payeeAccount.schemeIdentifier = 'com.paycashless';
-    objects.paymentIntentDataObjects.schemeIdentifier = 'com.paycashless';
+    const { version, ...rest } = requestData;
+    // Copy the two templates that get a scheme identifier, so the caller's
+    // object is not modified.
+    const objects: typeof rest = {
+      ...rest,
+      payeeAccount: { ...rest.payeeAccount, schemeIdentifier: 'com.paycashless' },
+      paymentIntentDataObjects: { ...rest.paymentIntentDataObjects, schemeIdentifier: 'com.paycashless' },
+    };
 
     let payload = DataObjectRegistry.version.id.concat(len(version)).concat(version);
     for (const key in objects) {
