@@ -1,4 +1,14 @@
+// Every data object carries a two-digit length, so a value can be at most 99
+// characters. A longer one would be written with a three-digit length that
+// decode then misreads, so it is refused here instead.
+const MAX_VALUE_LENGTH = 99;
+
 function len(s: string) {
+  if (s.length > MAX_VALUE_LENGTH) {
+    throw new RangeError(
+      `data object value is ${s.length} characters; the two-digit length field allows at most ${MAX_VALUE_LENGTH}`
+    );
+  }
   return s.length.toString().padStart(2, '0');
 }
 

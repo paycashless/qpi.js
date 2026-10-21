@@ -77,8 +77,8 @@ export const DataObjectSchema = z.object({
       .min(aTemplate?.narration.minLength!)
       .max(aTemplate?.narration.maxLength!),
     channel: z.string()
-      .min(aTemplate?.narration.minLength!)
-      .max(aTemplate?.narration.maxLength!),
+      .min(aTemplate?.channel.minLength!)
+      .max(aTemplate?.channel.maxLength!),
   }),
   paymentIntentDataObjects: z.object({
     token: z.string()
